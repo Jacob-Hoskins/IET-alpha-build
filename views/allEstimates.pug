@@ -1,0 +1,40 @@
+extends base
+
+mixin estimateCard()
+    each estimate in estimates
+        .jobEstimates-card-delete-flex
+            a(href=`/jobEstimates/${estimate.jobNumber}`)
+                .all-estimates-card
+                    p=estimate.jobName
+                    p=estimate.jobNumber
+            form(action=`/deleteEstimate/${estimate.jobNumber}`, method="post") 
+                <button class="trash-can-btn">
+                    <i type="submit" class="fa-solid fa-trash fa-2xl trash-can" style="color: #98c1d9;"></i>
+                </button>
+            
+
+block content 
+    h4(class="client-business-name-header") Business Name Here Estimates
+
+    <div class="modal-main-background" id="modal-main-background">
+        <div class="create-estimate-modal">
+            <p class="close-x" id="close-modal">x</p>
+            <form action="/jobEstimates/CreateEstimate", method="post" class="create-estimate-form">
+                <label for="jobName">Job Name</label>
+                <input type="text", id="jobNameInput", name="jobName">
+                <label for="jobNumber">Job Number</label>
+                <input type="text", id="jobNumberInput", name="jobNumber">
+                button(type="submit" class="create-estimate-btn") create 
+                <p class="modal-advance-options"> Advanced ↓ </p>
+            </form> 
+            
+        </div>
+    </div>
+    //- TODO: edit/update New estimate button styling
+    <div id="estimate-modal-page-div">
+        <button id="add-estimate-btn" class="add-estimate-btn">New</button>
+        <div class="all-estimates-div">
+            +estimateCard()
+        </div>
+    </div>
+    script(src='/scripts/newEstimate.js')

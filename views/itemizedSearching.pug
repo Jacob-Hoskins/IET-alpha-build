@@ -1,0 +1,123 @@
+extends base 
+
+mixin edit_delete_button()
+    each item in itemList 
+        .edit-delete-div
+            img(src="/images/edit_icon.png", alt="edit button", srcset="")
+            //- TODO: finish the post action for deleting a item from a table
+            form(action=`/estimate/delete-item-estimate/${item.itemName}`, method="post") 
+                <button class="trash-can-btn" type="submit">
+                    <i type="submit" class="fa-solid fa-trash fa-2xl trash-can" style="color: #ee6c4d;"></i>
+                </button>
+
+mixin total_price_in_list()
+    each item in itemList 
+        p $5.59
+
+mixin unit_price_in_estimate()
+    each item in itemList 
+        p $5.59
+
+mixin quantity_in_estimate_list()
+    each item in itemList 
+        input(type="number", value=`${item.quantity}`, class="quantity-input")
+
+mixin items_in_estimate_list()
+    each item in itemList
+        p=item.itemName
+
+
+//- TODO: update todo & delete styling
+//- TODO: when quantity of item updated, update it in the DB
+//- mixin items_in_estimate_list()
+//-     div.itemized-header
+//-         p Item 
+//-         p Quantity 
+//-         p Single Unit Price 
+//-         p Total Price
+
+//-     each item in itemList
+//-         .itemized-page-items-div
+//-             p=item.itemName
+//-             input(type="number" value=`${item.quantity}` class="quantity-input")
+//-             p $5.29
+//-             p $5.29
+            //- .edit-delete-div
+            //-     img(src="/images/edit_icon.png", alt="edit button", srcset="")
+            //-     //- TODO: finish the post action for deleting a item from a table
+            //-     form(action=`/estimate/delete-item-estimate/${item.itemName}`, method="post") 
+            //-         <button class="trash-can-btn" type="submit">
+            //-             <i type="submit" class="fa-solid fa-trash fa-2xl trash-can" style="color: #ee6c4d;"></i>
+            //-         </button>
+
+block content
+    <!-- input section  -->
+    <div class="input-div">
+        <form action="/add/item" method="post">
+            <input type="text" name="itemInput" placeholder="Search" class="searchbar" id="searchbar-input"/>
+            <button class="add-to-list-btn" id="add-btn">Add</button>
+
+        </form>
+
+    </div>
+    <!-- Job Details -->
+    <div class="job-info" id="job-info-id">
+        <div class="job-info-div">
+            <p>Job Name:</p>
+            p=jobName 
+        </div>
+        <div class="job-info-div">
+            <p>Job Number:</p>
+            p=jobNumber 
+        </div>
+    </div>
+
+    .items-list-div
+        .item-column-div 
+            p Items 
+            +items_in_estimate_list()
+         
+        div(class="item-column-div input-btn-itemized") 
+            p Quantity 
+            +quantity_in_estimate_list()
+        .item-column-div 
+            p Single Price 
+            +unit_price_in_estimate()
+        .item-column-div
+            p Total Price 
+            +total_price_in_list()
+        div(class="item-column-div input-btn-itemized") 
+            +edit_delete_button()
+    div 
+        .search-for-items-div 
+            form(action=`/jobEstimates/FinishEstimate/${jobNumber}`, method="post") 
+                button(type="submit") Search
+            
+
+        //- +items_in_estimate_list()
+    //- itemized header
+    //- div.itemized-header
+    //-     p Item 
+    //-     p Quantity 
+    //-     p Single Unit Price 
+    //-     p Total Price
+        
+    //- <!-- item search menu -->
+    //- <div class="table-div">
+    //-     <!-- Item table -->
+    //-     <div class="item-table">
+    //-         <!-- Items searching div -->
+    //-         <div class="items-searching" id="items-searching">
+    //-             +items_in_estimate_list()
+    //-         </div>
+    //-         <!-- Search and total -->
+    //-         //- TODO: set up button to change finished estimate to true so python can start searching
+    //-         <div class="search-total-div">
+    //-             form(action="/jobEstimate/StartSearching", method="post") 
+    //-                 <button class="search-btn" id="search-btn">Search</button>
+    //-                 <p>Total: $</p>
+    //-         </div>
+    //-     </div>
+    //- </div>
+
+    script(src='/scripts/itemizedScript.js')

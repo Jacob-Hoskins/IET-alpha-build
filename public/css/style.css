@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+}
+
+@font-face {
+  font-family: titleFont;
+  src: url("./morsan/MorsanFont/Morsan.ttf");
+}
+
+@font-face {
+  font-family: bodyFont;
+  src: url("./champagne---limousines/Champagne---Limousines.ttf");
+}
+
+p {
+  color: #e0fbfc;
+  font-family: bodyFont;
+  font-size: 22px;
+}
+
+.client-business-name-header {
+  color: #e0fbfc;
+  text-align: center;
+  margin: auto;
+  font-size: 2.7rem;
+  font-family: titleFont;
+}
+
+.body {
+  background-color: #293241;
+}
+
+/* Side bar */
+header {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+nav {
+  background-color: #ee6c4d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: fixed;
+  height: 100vh;
+}
+
+.nav-body-div {
+  display: flex;
+}
+
+.nav-btn {
+  width: 50px;
+  height: 50px;
+}
+
+/* Itemized table */
+
+.items-searching {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input-div {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+.itemized-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.table-div {
+  padding: 10px;
+  background-color: #3a3838;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.itemized-page-items-div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70vw;
+}
+
+.item-row {
+  border-bottom: solid black 2px;
+  margin: 5px;
+}
+
+table {
+  background-color: #e39702;
+  width: 70vw;
+  margin-bottom: 50px;
+}
+
+.items-list-div {
+  display: flex;
+  width: 90vw;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.item-column-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-btn-itemized {
+  padding-bottom: 4vh;
+}
+
+.item-row {
+  background-color: #e39702;
+  border: solid black 2px;
+  margin: auto;
+  margin-top: 1vh;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-total-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 50px;
+}
+
+.add-to-list-btn {
+  background-color: #98c1d9;
+}
+
+.search-btn {
+  width: 10vw;
+  background-color: #98c1d9;
+}
+
+.job-info-div {
+  display: flex;
+  gap: 2vw;
+}
+
+.quantity-input {
+  width: 5vw;
+  margin-bottom: 2vh;
+}
+
+.edit-delete-div {
+  display: flex;
+  flex-direction: row;
+  width: 13vw;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.search-for-items-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* all estimates page */
+
+#estimate-modal-page-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5vh;
+  margin-top: 5vh;
+  width: 90vw;
+}
+
+.add-estimate-btn {
+  background-color: #98c1d9;
+  width: 8vw;
+}
+
+.jobEstimates-card-delete-flex {
+  margin-left: 8vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  align-content: flex-start;
+}
+
+.trash-can {
+  cursor: pointer;
+  background-color: #293241;
+  display: contents;
+  margin-left: 25px;
+}
+
+.trash-can-btn {
+  display: contents;
+}
+
+/* .delete-trash-can {
+  height: 8vh;
+  display: flex;
+} */
+
+#modal-main-background {
+  display: none;
+  background-color: rgba(58, 56, 56, 0.644);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+}
+
+.all-estimates-div {
+  margin-bottom: 5px;
+}
+
+.all-estimates-card {
+  border-radius: 20px;
+  background-color: #ee6c4d;
+  display: flex;
+  justify-content: center;
+  gap: 25vw;
+  font-size: 20px;
+  text-align: center;
+  padding: 2vh;
+  margin-bottom: 3vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75vw;
+  height: 8vh;
+}
+
+/* create estimate modal */
+.create-estimate-modal {
+  color: #e0fbfc;
+  background-color: #293241;
+  height: 35vh;
+  width: 75vw;
+  margin-top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-estimate-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.close-x {
+  font-size: 35px;
+  width: 3vw;
+  display: flex;
+  justify-content: flex-end;
+  color: #e0fbfc;
+  cursor: pointer;
+  padding-right: 5px;
+}
+
+.create-estimate-btn {
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+  background-color: #98c1d9;
+  width: 8vw;
+  height: 5vh;
+}
