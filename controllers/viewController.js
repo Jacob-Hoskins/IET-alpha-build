@@ -1,6 +1,11 @@
 const { request } = require("express");
 const ItemModel = require("../models/itemizedModel");
 
+// TODO: Home page controller get it out of this file and work on making it its own controller
+exports.createAccount = (req, res) => {
+  res.status(200).render("createAccount");
+};
+
 // TODO: this controller should be renamed at some point to estimate controller, and the router name changed to estimate router
 
 exports.home = async (req, res) => {

@@ -1,0 +1,17 @@
+extends base  
+
+block content
+    h1 Home
+    .create-account-div
+        form(action="", method="post", class="create-account-form") 
+            label(for="firstName") First Name
+            input(type="text", name="firstName") 
+            label(for="lastName") last Name
+            input(type="text", name="lastName") 
+            label(for="email") Email 
+            input(type="email", name="email")
+            lable(for="password") Password
+            input(type="password", name="password")
+            label(for="passConfirm") Password Confirm
+            input(type="password", name="passConfirm")
+            button(type="submit") Create Account

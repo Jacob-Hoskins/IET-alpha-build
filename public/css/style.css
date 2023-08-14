@@ -18,6 +18,10 @@ p {
   font-size: 22px;
 }
 
+input {
+  text-align: center;
+}
+
 .client-business-name-header {
   color: #e0fbfc;
   text-align: center;
@@ -278,4 +282,26 @@ table {
   background-color: #98c1d9;
   width: 8vw;
   height: 5vh;
+}
+
+/* Create Account Page */
+.create-account-div {
+  background-color: #ee6c4d;
+  width: 35vw;
+  margin-left: 30.5vw;
+  text-align: center;
+  border-radius: 25px;
+  border: solid #000000 2px;
+}
+
+.create-account-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.create-account-form button {
+  width: 15vw;
+  margin: auto;
+  margin-top: 3vh;
 }

@@ -5,6 +5,9 @@ const router = express.Router();
 
 // TODO: will need authentication routes before these for user to log in and properly use
 // TODO: update routes with proper types, would previously cause error
+
+router.get("/createAccount", viewController.createAccount);
+
 router.get("/jobEstimates", viewController.allEstimates);
 router.get("/jobEstimates/:jobNumber", viewController.home);
 router.post("/add/item", viewController.addItem);
