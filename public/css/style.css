@@ -284,6 +284,7 @@ table {
   height: 5vh;
 }
 
+/* TODO: update mobile styling for the create account section. Everything should be bigger */
 /* Create Account Page */
 .create-account-div {
   background-color: #ee6c4d;
@@ -305,4 +306,5 @@ table {
   width: 15vw;
   margin: auto;
   margin-top: 3vh;
+  background-color: #98c1d9;
 }

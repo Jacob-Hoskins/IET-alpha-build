@@ -7,6 +7,7 @@ const router = express.Router();
 // TODO: update routes with proper types, would previously cause error
 
 router.get("/createAccount", viewController.createAccount);
+router.post("/createAccount/newUser", viewController.createNewUser);
 
 router.get("/jobEstimates", viewController.allEstimates);
 router.get("/jobEstimates/:jobNumber", viewController.home);

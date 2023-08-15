@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     required: [true, "A user must have a email address"],
+    unique: true,
     type: String,
   },
   password: {
@@ -42,3 +43,29 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
 });
+
+// TODO: encrypt password before it goes into DB
+userSchema.pre(/^find/, async function (next) {
+  // this is query middlewear and points to current query
+  //   this.password = await bcrypt.hash(this.password, 12);
+  this.find({ active: { $ne: false } });
+  next();
+});
+
+userSchema.pre("save", async function (next) {
+  // this is query middlewear and points to current query
+  this.password = await bcrypt.hash(this.password, 12);
+  this.passwordConfirm = undefined;
+  next();
+});
+
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+const User = mongoose.model("Users", userSchema);
+
+module.exports = User;
