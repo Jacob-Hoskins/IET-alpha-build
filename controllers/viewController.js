@@ -1,6 +1,7 @@
 const { request } = require("express");
 const ItemModel = require("../models/itemizedModel");
 const UserModel = require("../models/userModel");
+const authController = require("./authcontroller");
 
 exports.createNewUser = async (req, res) => {
   const newUser = await UserModel.create({
@@ -10,6 +11,8 @@ exports.createNewUser = async (req, res) => {
     password: req.body.password,
     passwordConfirm: req.body.passConfirm,
   });
+
+  authController.createSendToken(newUser, res);
 
   res.redirect("/createAccount");
 };
