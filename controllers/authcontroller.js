@@ -23,3 +23,7 @@ exports.createSendToken = (user, res) => {
   //     },
   //   });
 };
+
+exports.login = async (req, res, next) => {
+  res.render("login");
+};

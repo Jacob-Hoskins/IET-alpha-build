@@ -1,0 +1,11 @@
+extends base 
+
+block content
+    .create-account-div
+        h2 Log into your account 
+        form(action="", method="get", class="create-account-form")
+            label(for="email") Email 
+            input(type="email", name="email")
+            label(for="password") Password 
+            input(type="password", for="password")
+            button(type="submit") Login

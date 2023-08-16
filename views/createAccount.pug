@@ -2,7 +2,8 @@ extends base
 
 block content
     .create-account-div
-        form(action="/createAccount/newUser", method="post", class="create-account-form") 
+        form(action="/createAccount/newUser", method="post", class="create-account-form")
+            h2 Create your account today!
             label(for="firstName") First Name
             input(type="text", name="firstName") 
             label(for="lastName") last Name

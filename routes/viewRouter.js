@@ -1,5 +1,6 @@
 const express = require("express");
 const viewController = require("../controllers/viewController");
+const authController = require("../controllers/authcontroller");
 
 const router = express.Router();
 
@@ -8,6 +9,7 @@ const router = express.Router();
 
 router.get("/createAccount", viewController.createAccount);
 router.post("/createAccount/newUser", viewController.createNewUser);
+router.get("/login", authController.login);
 
 router.get("/jobEstimates", viewController.allEstimates);
 router.get("/jobEstimates/:jobNumber", viewController.home);
