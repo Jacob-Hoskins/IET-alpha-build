@@ -34,6 +34,18 @@ input {
   background-color: #293241;
 }
 
+/* HOME PAGE */
+.home-nav {
+  display: flex;
+  flex-direction: row;
+  height: 7%;
+  width: 100%;
+}
+
+.home-main-content {
+  color: white;
+}
+
 /* Side bar */
 header {
   display: flex;

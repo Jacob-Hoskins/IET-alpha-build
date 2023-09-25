@@ -1,0 +1,48 @@
+.home-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+header {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.header-img {
+  margin: auto;
+  width: 100%;
+  height: 77vh;
+}
+
+.header-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+}
+
+section {
+  margin-top: 10vh;
+  text-align: center;
+}
+
+.section-title {
+  margin: auto;
+  background-color: #ee6c4d;
+  padding: 5px;
+  width: 45vw;
+  border-radius: 25px;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  margin: auto;
+  margin-top: 3vh;
+  text-align: center;
+  border-bottom: solid #ee6c4d 2px;
+  width: 25vw;
+}
