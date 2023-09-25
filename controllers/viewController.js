@@ -3,6 +3,8 @@ const ItemModel = require("../models/itemizedModel");
 const UserModel = require("../models/userModel");
 const authController = require("./authcontroller");
 
+
+//TODO: try importing the auth0 here and using it as a module
 exports.createNewUser = async (req, res) => {
   const newUser = await UserModel.create({
     firstName: req.body.firstName,
