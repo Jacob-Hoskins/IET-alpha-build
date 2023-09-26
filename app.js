@@ -10,7 +10,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: "a long, randomly-generated string stored in env",
-  baseURL: "iet.onrender.com",
+  baseURL: "https://www.iet.onrender.com",
   clientID: "DbIQU4pabkjxucqerUJpqhfPKh0Oxt0N",
   issuerBaseURL: "https://dev-2nzpe3olofuxkog8.us.auth0.com",
 };
