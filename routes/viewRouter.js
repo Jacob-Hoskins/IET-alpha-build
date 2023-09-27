@@ -28,7 +28,8 @@ router.get("/", (req, res) => {
     // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
     // console.log(req.oidc.user);
     // TODO: make verify email page, and user info page
-    res.redirect(`/account-setup/${req.oidc.user["sid"]}`);
+    res.end("verify your email bitch");
+    // res.redirect(`/account-setup/${req.oidc.user["sid"]}`);
   }
   //logout
   if (req.oidc.isAuthenticated() === false) {

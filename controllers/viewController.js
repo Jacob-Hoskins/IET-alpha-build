@@ -3,26 +3,25 @@ const ItemModel = require("../models/itemizedModel");
 const UserModel = require("../models/userModel");
 const authController = require("./authcontroller");
 
+// //TODO: try importing the auth0 here and using it as a module
+// exports.createNewUser = async (req, res) => {
+//   const newUser = await UserModel.create({
+//     firstName: req.body.firstName,
+//     lastName: req.body.lastName,
+//     email: req.body.email,
+//     password: req.body.password,
+//     passwordConfirm: req.body.passConfirm,
+//   });
 
-//TODO: try importing the auth0 here and using it as a module
-exports.createNewUser = async (req, res) => {
-  const newUser = await UserModel.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passConfirm,
-  });
+//   authController.createSendToken(newUser, res);
 
-  authController.createSendToken(newUser, res);
+//   res.redirect("/createAccount");
+// };
 
-  res.redirect("/createAccount");
-};
-
-// TODO: Home page controller get it out of this file and work on making it its own controller
-exports.createAccount = (req, res) => {
-  res.status(200).render("createAccount");
-};
+// // TODO: Home page controller get it out of this file and work on making it its own controller
+// exports.createAccount = (req, res) => {
+//   res.status(200).render("createAccount");
+// };
 
 // TODO: this controller should be renamed at some point to estimate controller, and the router name changed to estimate router
 
