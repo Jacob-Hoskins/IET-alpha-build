@@ -8,13 +8,13 @@ const { auth, requiresAuth } = require("express-openid-connect");
 
 // Below are AUTH0 callback URL's
 // , https://iet.onrender.com, https://iet.onrender.com/jobEstimates, https://iet.onrender.com/login, https://iet.onrender.com/callback
-// baseURL: "https://iet.onrender.com",
+// baseURL: "http://localhost:3000",
 
 const config = {
   authRequired: false,
   auth0Logout: true,
   secret: "a long, randomly-generated string stored in env",
-  baseURL: "http://localhost:3000",
+  baseURL: "https://iet.onrender.com",
   clientID: "DbIQU4pabkjxucqerUJpqhfPKh0Oxt0N",
   issuerBaseURL: "https://dev-2nzpe3olofuxkog8.us.auth0.com",
 };
