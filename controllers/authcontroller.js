@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-const User = require("../models/userModel");
+const UserModel = require("../models/userModel");
 const appError = require("../utils/appError");
 
 const signToken = (id) => {
@@ -53,4 +53,16 @@ exports.login = async (req, res, next) => {
 
   this.createSendToken(user, 200, res);
   // res.end("cool");
+};
+
+exports.createNewUser = async (req, res) => {
+  const newUser = await UserModel.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.params.email,
+    authPID: req.params.authID,
+  });
+
+  console.log(req.params.authID, newUser["id"]);
+  res.redirect(`/jobEstimates/${req.params.authID}/${newUser["id"]}`);
 };

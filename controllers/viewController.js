@@ -2,6 +2,7 @@ const { request } = require("express");
 const ItemModel = require("../models/itemizedModel");
 const UserModel = require("../models/userModel");
 const authController = require("./authcontroller");
+const { auth, requiresAuth } = require("express-openid-connect");
 
 // //TODO: try importing the auth0 here and using it as a module
 // exports.createNewUser = async (req, res) => {
@@ -25,7 +26,48 @@ const authController = require("./authcontroller");
 
 // TODO: this controller should be renamed at some point to estimate controller, and the router name changed to estimate router
 
-exports.home = async (req, res) => {
+exports.homehandle = async (req, res) => {
+  //checks if email is verified
+  // TODO: put this if block below in auth controller as login funciton
+  if (req.oidc.isAuthenticated() === true) {
+    try {
+      let user_email = req.oidc.user["sid"];
+      let search_for_user = await UserModel.findOne({ authPID: user_email });
+      res.redirect(
+        `/jobestimates/${req.oidc.user["sid"]}/${search_for_user["id"]}`
+      );
+    } catch (err) {
+      res.redirect(
+        `/account-setup/${req.oidc.user["sid"]}/${req.oidc.user["email"]}`
+      );
+    }
+  }
+
+  //handles unverified email
+  // if (
+  //   req.oidc.isAuthenticated() === true &&
+  //   req.oidc.user["email_verified"] == false
+  // ) {
+  //   // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
+  //   // console.log(req.oidc.user);
+  //   // TODO: make verify email page, and user info page
+  //   res.end("verify your email bitch");
+  //   // res.redirect(`/account-setup/${req.oidc.user["sid"]}`);
+  // }
+  //logout and or homepage
+  if (req.oidc.isAuthenticated() === false) {
+    res.render("home");
+  }
+};
+
+exports.accountSetup = async (req, res) => {
+  res.render("createAccount", {
+    email: req.oidc.user["email"],
+    authID: req.params.authID,
+  });
+};
+
+exports.itemizedEstimatePage = async (req, res) => {
   // console.log(req.params.jobNumber);
 
   let current_items = await ItemModel.findOne({
@@ -45,28 +87,39 @@ exports.home = async (req, res) => {
 
 // Will have to change job name to job number
 exports.allEstimates = async (req, res) => {
-  let job_details = [];
+  // let job_details = [];
 
-  const all_estimates = await ItemModel.find();
+  // const all_estimates = await ItemModel.find();
 
-  //   grabs all the data by job names, sorts it into array of objects to make sure none are double made, and sends to page
-  for (let x = 0; x <= all_estimates.length - 1; x += 1) {
-    let array = all_estimates[x];
-    if (job_details.some((name) => name.jobName === array.jobName)) {
-      //   console.log("In list already");
-    } else {
-      let new_dict = {};
-      new_dict.jobName = array.jobName;
-      new_dict.jobNumber = array.jobNumber;
-      job_details.push(new_dict);
-    }
-    // return job_details;
+  // //   grabs all the data by job names, sorts it into array of objects to make sure none are double made, and sends to page
+  // for (let x = 0; x <= all_estimates.length - 1; x += 1) {
+  //   let array = all_estimates[x];
+  //   if (job_details.some((name) => name.jobName === array.jobName)) {
+  //     //   console.log("In list already");
+  //   } else {
+  //     let new_dict = {};
+  //     new_dict.jobName = array.jobName;
+  //     new_dict.jobNumber = array.jobNumber;
+  //     job_details.push(new_dict);
+  //   }
+  //   // return job_details;
+  // }
+
+  // // console.log(all_estimates);
+  // res.status(200).render("allEstimates", {
+  //   estimates: job_details,
+  // });
+
+  try {
+    const all_estimates = await ItemModel.find({
+      createdBy: req.params.MongoID,
+    });
+    console.log(all_estimates);
+    res.render("allEstimates", { estimates: all_estimates });
+  } catch (err) {
+    console.log(err);
+    res.render("allEstimates", { estimates: false });
   }
-
-  // console.log(all_estimates);
-  res.status(200).render("allEstimates", {
-    estimates: job_details,
-  });
 };
 
 // TODO: update to match the new model

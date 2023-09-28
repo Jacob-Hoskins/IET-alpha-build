@@ -10,36 +10,37 @@ const router = express.Router();
 
 // Add the homepage here in this and it'll redirect based off of user being logged in and will show routes based off of that to user
 // ie if theyre not logged in they get home page with create acc log in etc, but if they are then theyll be sent to the nav tool display
-router.get("/", (req, res) => {
-  //checks if email is verified
-  if (
-    req.oidc.isAuthenticated() === true &&
-    req.oidc.user["email_verified"] == true
-  ) {
-    // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
-    console.log(req.oidc.user["nickname"]);
-    res.redirect("/jobestimates");
-  }
-  //handles unverified email
-  if (
-    req.oidc.isAuthenticated() === true &&
-    req.oidc.user["email_verified"] == false
-  ) {
-    // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
-    // console.log(req.oidc.user);
-    // TODO: make verify email page, and user info page
-    res.end("verify your email bitch");
-    // res.redirect(`/account-setup/${req.oidc.user["sid"]}`);
-  }
-  //logout
-  if (req.oidc.isAuthenticated() === false) {
-    res.render("home");
-  }
-});
 
-router.get("/account-setup/:user_id", (req, res) => {
-  res.end(req.params.user_id);
-});
+// router.get("/", (req, res) => {
+//   //checks if email is verified
+//   if (
+//     req.oidc.isAuthenticated() === true &&
+//     req.oidc.user["email_verified"] == true
+//   ) {
+//     // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
+//     console.log(req.oidc.user["nickname"]);
+//     res.redirect("/jobestimates");
+//   }
+//   //handles unverified email
+//   if (
+//     req.oidc.isAuthenticated() === true &&
+//     req.oidc.user["email_verified"] == false
+//   ) {
+//     // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
+//     // console.log(req.oidc.user);
+//     // TODO: make verify email page, and user info page
+//     res.end("verify your email bitch");
+//     // res.redirect(`/account-setup/${req.oidc.user["sid"]}`);
+//   }
+//   //logout and or homepage
+//   if (req.oidc.isAuthenticated() === false) {
+//     res.render("home");
+//   }
+// });
+
+router.get("/", viewController.homehandle);
+
+router.get("/account-setup/:authID/:email", viewController.accountSetup);
 
 // router.get("/createAccount", viewController.createAccount);
 // router.post("/createAccount/newUser", viewController.createNewUser);
@@ -49,8 +50,16 @@ router.get("/account-setup/:user_id", (req, res) => {
 // });
 
 // TODO: add identifier for users to the routes
-router.get("/jobEstimates", requiresAuth(), viewController.allEstimates);
-router.get("/jobEstimates/:jobNumber", requiresAuth(), viewController.home);
+router.get(
+  "/jobEstimates/:id/:MongoID",
+  requiresAuth(),
+  viewController.allEstimates
+);
+router.get(
+  "/jobEstimates/:jobNumber",
+  requiresAuth(),
+  viewController.itemizedEstimatePage
+);
 router.post("/add/item", viewController.addItem);
 router.post(
   "/jobEstimates/CreateEstimate",
@@ -62,6 +71,12 @@ router.post(
   requiresAuth(),
   viewController.startSearching
 );
+
+router.post(
+  "/createAccount/newuser/:authID/:email",
+  authController.createNewUser
+);
+
 // TODO: run test on the delete routes and make sure they work
 router.delete(
   "/deleteEstimate/:jobNumber",
