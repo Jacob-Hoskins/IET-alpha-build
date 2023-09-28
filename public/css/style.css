@@ -81,6 +81,7 @@ header {
   align-items: center;
   justify-content: space-between;
   background-color: #ee6c4d;
+  height: 100vh;
 }
 
 /* Itemized table */

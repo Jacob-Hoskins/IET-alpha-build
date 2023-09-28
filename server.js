@@ -19,6 +19,6 @@ mongoose
     console.log("Database connection succesful");
   });
 
-const server = app.listen(3000, () => {
+const server = app.listen(10000, () => {
   console.log("Server running");
 });
