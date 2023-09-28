@@ -3,12 +3,12 @@
   color: white;
 }
 
-nav {
+/* nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
-}
+} */
 
 .home-nav {
   display: flex;
@@ -16,9 +16,13 @@ nav {
   align-items: center;
   padding: 0 15px;
   background-color: #ee6c4d;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
-header {
+.home-header {
   position: relative;
   text-align: center;
   color: white;
