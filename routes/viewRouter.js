@@ -56,7 +56,7 @@ router.get(
   viewController.allEstimates
 );
 router.get(
-  "/jobEstimates/:jobNumber",
+  "/jobEstimates/:jobNumber/:authID/:MongoID",
   requiresAuth(),
   viewController.itemizedEstimatePage
 );

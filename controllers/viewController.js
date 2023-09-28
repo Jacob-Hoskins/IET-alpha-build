@@ -37,6 +37,7 @@ exports.homehandle = async (req, res) => {
         `/jobestimates/${req.oidc.user["sid"]}/${search_for_user["id"]}`
       );
     } catch (err) {
+      console.log(err);
       res.redirect(
         `/account-setup/${req.oidc.user["sid"]}/${req.oidc.user["email"]}`
       );
