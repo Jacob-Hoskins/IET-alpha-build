@@ -5,49 +5,15 @@ const { auth, requiresAuth } = require("express-openid-connect");
 
 const router = express.Router();
 
-// TODO: will need authentication routes before these for user to log in and properly use
-// TODO: update routes with proper types, would previously cause error
-
-// Add the homepage here in this and it'll redirect based off of user being logged in and will show routes based off of that to user
-// ie if theyre not logged in they get home page with create acc log in etc, but if they are then theyll be sent to the nav tool display
-
-// router.get("/", (req, res) => {
-//   //checks if email is verified
-//   if (
-//     req.oidc.isAuthenticated() === true &&
-//     req.oidc.user["email_verified"] == true
-//   ) {
-//     // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
-//     console.log(req.oidc.user["nickname"]);
-//     res.redirect("/jobestimates");
-//   }
-//   //handles unverified email
-//   if (
-//     req.oidc.isAuthenticated() === true &&
-//     req.oidc.user["email_verified"] == false
-//   ) {
-//     // PUT IDENTIFIER IN URL TO PASS INFO TO PAGE & DB AND PULL NEEDED INFO/UPDATE
-//     // console.log(req.oidc.user);
-//     // TODO: make verify email page, and user info page
-//     res.end("verify your email bitch");
-//     // res.redirect(`/account-setup/${req.oidc.user["sid"]}`);
-//   }
-//   //logout and or homepage
-//   if (req.oidc.isAuthenticated() === false) {
-//     res.render("home");
-//   }
-// });
+// TODO: update routes with proper identifiers and their coresponding controllers and pug templates
 
 router.get("/", viewController.homehandle);
 
-router.get("/account-setup/:authID/:email", viewController.accountSetup);
-
-// router.get("/createAccount", viewController.createAccount);
-// router.post("/createAccount/newUser", viewController.createNewUser);
-
-// router.get("/login", (req, res) => {
-//   console.log(req.oidc.isAuthenticated());
-// });
+router.get(
+  "/account-setup/:authID/:email",
+  requiresAuth(),
+  authController.accountSetup
+);
 
 // TODO: add identifier for users to the routes
 router.get(

@@ -2,6 +2,14 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/userModel");
 const appError = require("../utils/appError");
+const { auth, requiresAuth } = require("express-openid-connect");
+
+exports.accountSetup = async (req, res) => {
+  res.render("createAccount", {
+    email: req.oidc.user["email"],
+    authID: req.params.authID,
+  });
+};
 
 const signToken = (id) => {
   return jwt.sign({ id }, "shhhh", { expiresIn: "90d" });
