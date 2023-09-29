@@ -2,19 +2,23 @@ const mongoose = require("mongoose");
 
 // TODO: will need to add ID of whoever created the list when user accounts are created
 const itemSchema = new mongoose.Schema({
-  createdByID: {
+  createdByMongoId: {
+    type: String,
+    required: true,
+  },
+  createdByAuthId: {
     type: String,
     required: true,
   },
   jobName: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   jobNumber: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   itemList: [
     {

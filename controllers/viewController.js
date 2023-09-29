@@ -3,6 +3,7 @@ const ItemModel = require("../models/itemizedModel");
 const UserModel = require("../models/userModel");
 const authController = require("./authcontroller");
 const { auth, requiresAuth } = require("express-openid-connect");
+const cookieParser = require("cookie-parser");
 
 // //TODO: try importing the auth0 here and using it as a module
 // exports.createNewUser = async (req, res) => {
@@ -30,11 +31,12 @@ exports.homehandle = async (req, res) => {
   //checks if email is verified
   // TODO: put this if block below in auth controller as login funciton
   if (req.oidc.isAuthenticated() === true) {
-    console.log(req.oidc.user["sub"].split("|")[1]);
+    // console.log(req.oidc.user["sub"].split("|")[1]);
     try {
       let user_auth_id = req.oidc.user["sub"].split("|")[1];
       let search_for_user = await UserModel.findOne({ authPID: user_auth_id });
-
+      res.cookie("authID", req.params.id);
+      res.cookie("mongo", req.params.MongoID);
       res.redirect(
         `/jobestimates/${req.oidc.user["sub"].split("|")[1]}/${
           search_for_user["id"]
@@ -119,9 +121,10 @@ exports.allEstimates = async (req, res) => {
 
   try {
     const all_estimates = await ItemModel.find({
-      createdBy: req.params.MongoID,
+      createdByMongoId: req.params.MongoID,
     });
     console.log(all_estimates);
+
     res.render("allEstimates", { estimates: all_estimates });
   } catch (err) {
     console.log(err);
@@ -156,8 +159,10 @@ exports.createEstimate = async (req, res) => {
   let new_estimate = await ItemModel.create({
     jobName: req.body.jobName,
     jobNumber: req.body.jobNumber,
+    createdByMongoId: req.cookies.mongo,
+    createdByAuthId: req.cookies.authID,
   });
-  res.redirect("/jobEstimates");
+  res.redirect(`/jobEstimates/${req.cookies.authID}/${req.cookies.mongo}`);
 };
 
 exports.startSearching = async (req, res) => {
