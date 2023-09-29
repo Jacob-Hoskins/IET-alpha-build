@@ -13,10 +13,11 @@ exports.homehandle = async (req, res) => {
   if (req.oidc.isAuthenticated() === true) {
     // console.log(req.oidc.user["sub"].split("|")[1]);
     try {
-      let user_auth_id = req.oidc.user["sub"].split("|")[1];
-      let search_for_user = await UserModel.findOne({ authPID: user_auth_id });
-      res.cookie("authID", req.params.id);
-      res.cookie("mongo", req.params.MongoID);
+      let search_for_user = await UserModel.findOne({
+        authPID: req.oidc.user["sub"].split("|")[1],
+      });
+      res.cookie("authID", req.oidc.user["sub"].split("|")[1]);
+      res.cookie("mongo", search_for_user["id"]);
       res.redirect(
         `/jobestimates/${req.oidc.user["sub"].split("|")[1]}/${
           search_for_user["id"]
@@ -45,6 +46,10 @@ exports.homehandle = async (req, res) => {
   // }
   //logout and or homepage
   if (req.oidc.isAuthenticated() === false) {
+    res.clearCookie("authID");
+    res.clearCookie("mongo");
+    res.clearCookie("current_estimate_id");
+
     res.render("home");
   }
 };
@@ -101,7 +106,7 @@ exports.allEstimates = async (req, res) => {
     const all_estimates = await ItemModel.find({
       createdByMongoId: req.params.MongoID,
     });
-    console.log(all_estimates);
+    // console.log(all_estimates);
 
     res.render("allEstimates", {
       estimates: all_estimates,
@@ -115,9 +120,13 @@ exports.allEstimates = async (req, res) => {
 };
 
 // TODO: update to match the new model
+// TODO: fix going by job number as it'll confuse the query
 exports.addItem = async (req, res) => {
-  let update_estimate_list = await ItemModel.updateOne(
-    { jobNumber: req.cookies.current_estimate_id },
+  let update_estimate_list = await ItemModel.findOneAndUpdate(
+    {
+      jobNumber: req.cookies.current_estimate_id,
+      createdByMongoId: req.cookies.mongo,
+    },
     {
       $push: {
         itemList: {
@@ -128,7 +137,9 @@ exports.addItem = async (req, res) => {
     }
   );
   // console.log(update_estimate_list);
-  res.redirect(`/jobEstimates/${req.cookies.current_estimate_id}`);
+  res.redirect(
+    `/jobEstimates/${req.cookies.current_estimate_id}/${req.cookies.authID}/${req.cookies.mongo}`
+  );
 };
 
 exports.createEstimate = async (req, res) => {
