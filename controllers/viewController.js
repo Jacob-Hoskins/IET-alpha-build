@@ -103,7 +103,11 @@ exports.allEstimates = async (req, res) => {
     });
     console.log(all_estimates);
 
-    res.render("allEstimates", { estimates: all_estimates });
+    res.render("allEstimates", {
+      estimates: all_estimates,
+      mongoID: req.params.MongoID,
+      authID: req.params.id,
+    });
   } catch (err) {
     console.log(err);
     res.render("allEstimates", { estimates: false });

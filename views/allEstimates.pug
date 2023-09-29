@@ -3,7 +3,7 @@ extends base
 mixin estimateCard()
     each estimate in estimates
         .jobEstimates-card-delete-flex
-            a(href=`/jobEstimates/${estimate.jobNumber}`)
+            a(href=`/jobEstimates/${estimate.jobNumber}/${authID}/${mongoID}`)
                 .all-estimates-card
                     p=estimate.jobName
                     p=estimate.jobNumber
