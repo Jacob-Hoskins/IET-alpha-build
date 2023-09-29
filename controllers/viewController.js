@@ -30,16 +30,22 @@ exports.homehandle = async (req, res) => {
   //checks if email is verified
   // TODO: put this if block below in auth controller as login funciton
   if (req.oidc.isAuthenticated() === true) {
+    console.log(req.oidc.user["sub"].split("|")[1]);
     try {
-      let user_email = req.oidc.user["sid"];
-      let search_for_user = await UserModel.findOne({ authPID: user_email });
+      let user_auth_id = req.oidc.user["sub"].split("|")[1];
+      let search_for_user = await UserModel.findOne({ authPID: user_auth_id });
+
       res.redirect(
-        `/jobestimates/${req.oidc.user["sid"]}/${search_for_user["id"]}`
+        `/jobestimates/${req.oidc.user["sub"].split("|")[1]}/${
+          search_for_user["id"]
+        }`
       );
     } catch (err) {
       console.log(err);
       res.redirect(
-        `/account-setup/${req.oidc.user["sid"]}/${req.oidc.user["email"]}`
+        `/account-setup/${req.oidc.user["sub"].split("|")[1]}/${
+          req.oidc.user["email"]
+        }`
       );
     }
   }
