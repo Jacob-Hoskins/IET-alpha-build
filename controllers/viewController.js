@@ -70,11 +70,13 @@ exports.itemizedEstimatePage = async (req, res) => {
 
   res.cookie("current_estimate_id", req.params.jobNumber);
 
-  res.status(200).render("itemizedSearching", {
-    jobName: current_items.jobName,
-    jobNumber: current_items.jobNumber,
-    itemList: current_items.itemList,
-  });
+  res.status(200).render("itemizedPage");
+
+  // res.status(200).render("itemizedSearching", {
+  //   jobName: current_items.jobName,
+  //   jobNumber: current_items.jobNumber,
+  //   itemList: current_items.itemList,
+  // });
 };
 
 // Will have to change job name to job number
@@ -143,6 +145,9 @@ exports.addItem = async (req, res) => {
 };
 
 exports.createEstimate = async (req, res) => {
+  // FOR TESTING WHY MOBILE DOESNT WORK
+  console.log("-------- TESTING FOR MOBILE OUTPUT BELOW --------");
+  console.log(req.cookies.mongo, "|", req.cookies.authID);
   let new_estimate = await ItemModel.create({
     jobName: req.body.jobName,
     jobNumber: req.body.jobNumber,
