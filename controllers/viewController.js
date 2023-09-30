@@ -104,6 +104,10 @@ exports.allEstimates = async (req, res) => {
   //   estimates: job_details,
   // });
 
+  // FOR TESTING WHY MOBILE DOESNT WORK
+  console.log("-------- TESTING FOR MOBILE OUTPUT BELOW --------");
+  console.log(req.cookies.mongo, "|", req.cookies.authID);
+
   try {
     const all_estimates = await ItemModel.find({
       createdByMongoId: req.params.MongoID,
