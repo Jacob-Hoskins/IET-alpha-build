@@ -1,0 +1,107 @@
+extends base
+
+mixin edit_delete_button()
+    each item in itemList 
+        .edit-delete-div
+            img(src="/images/edit_icon.png", alt="edit button", srcset="")
+            //- TODO: finish the post action for deleting a item from a table
+            form(action=`/estimate/delete-item-estimate/${item.itemName}`, method="post") 
+                <button class="trash-can-btn" type="submit">
+                    <i type="submit" class="fa-solid fa-trash fa-2xl trash-can" style="color: #ee6c4d;"></i>
+                </button>
+
+mixin total_price_in_list()
+    each item in itemList 
+        p $5.59
+
+mixin unit_price_in_estimate()
+    each item in itemList 
+        p $5.59
+
+mixin quantity_in_estimate_list()
+    each item in itemList 
+        input(type="number", value=`${item.quantity}`, class="quantity-input")
+
+mixin items_in_estimate_list()
+    each item in itemList
+        p=item.itemName
+
+
+block content
+    .itemized-main-content
+        .itemized-side 
+            <form action="/add/item" method="post" class="add-item-form">
+                label(for="searchbar-input") Item
+                <input type="text" name="itemInput" placeholder="Search" class="searchbar" id="searchbar-input"/>
+                label(for="quantity-count") quantity
+                <input type="number" name="itemCount", class="quantity-count", id="quantity-count"/>
+                <button type="submit" class="add-to-list-btn" id="add-btn">Add</button>
+            </form>
+
+            .items-list-div
+                .item-column-div 
+                    p Items 
+                    +items_in_estimate_list()
+                
+                div(class="item-column-div input-btn-itemized") 
+                    p Quantity 
+                    +quantity_in_estimate_list()
+                .item-column-div 
+                    p Single Price 
+                    +unit_price_in_estimate()
+                .item-column-div
+                    p Total Price 
+                    +total_price_in_list()
+                div(class="item-column-div input-btn-itemized") 
+                    +edit_delete_button()
+            div 
+                .search-for-items-div 
+                    form(action=`/jobEstimates/FinishEstimate/${jobNumber}`, method="post") 
+                        button(type="submit") Search
+
+
+        .filters-side 
+            <label class="container">Lowes
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">Home Depot
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">Menards
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">Price Comparison
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+
+
+            //- p filters
+            //- .checkboxes-div 
+            //-     <input type="checkbox" class="checkbox">
+            //-     <input type="checkbox" class="checkbox">
+            //-     <input type="checkbox" class="checkbox">
+            //-     <input type="checkbox" class="checkbox">
+
+            //- .checkboxes-label
+            //-     p Lowes 
+            //-     p Home Depot 
+            //-     p Menards 
+            //-     p Price Checker
+            //- <form>
+            //-     label(for="lowes-checkbox") Lowes
+            //-     <input type="checkbox">
+            //-     label(for="lowes-checkbox") Home Depot
+            //-     <input type="checkbox">
+            //-     label(for="lowes-checkbox") Menards
+            //-     <input type="checkbox">
+            //-     label(for="lowes-checkbox") Price Checker
+            //-     <input type="checkbox">
+
+            //- <input type="checkbox"> Lowes 
+            //- <input type="checkbox"> Home Depot 
+            //- <input type="checkbox"> Menards 
+            //- <input type="checkbox"> Price Checker
