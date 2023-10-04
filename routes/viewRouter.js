@@ -33,7 +33,7 @@ router.post(
   viewController.createEstimate
 );
 router.post(
-  "/jobEstimate/StartSearching",
+  "/jobEstimate/StartSearching/:jobNumber/:mongoID",
   requiresAuth(),
   viewController.startSearching
 );
@@ -56,9 +56,9 @@ router.delete(
 );
 
 // FIXME: this shouldnt be a route sense python is the one making and marking the route as finished and no route should be needed for this. Backend work
-router.post(
-  "/jobEstimates/FinishEstimate/:jobNumber",
-  requiresAuth(),
-  viewController.markEstimateFinished
-);
+// router.post(
+//   "/jobEstimates/FinishEstimate/:jobNumber/:mongoID",
+//   requiresAuth(),
+//   viewController.markEstimateFinished
+// );
 module.exports = router;

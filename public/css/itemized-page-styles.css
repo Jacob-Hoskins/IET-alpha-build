@@ -1,15 +1,32 @@
+.navbar-custom {
+  margin-left: 96vw;
+}
+
+.custom-btn-group-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.center-filters {
+  margin: auto;
+}
+
 .itemized-main-content {
   display: flex;
-  width: 100vw;
+  /* width: 100vw; */
   justify-content: space-around;
 }
 
 .itemized-side {
+  margin-top: 10vh;
   width: 75vw;
 }
 
 .add-item-form {
   width: 30vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 .filters-side {
@@ -31,4 +48,8 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.items-list-div {
+  margin-top: 5vh;
 }

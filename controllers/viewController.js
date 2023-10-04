@@ -116,7 +116,7 @@ exports.allEstimates = async (req, res) => {
 
     res.render("allEstimates", {
       estimates: all_estimates,
-      mongoID: req.params.MongoID,
+      mongoID: req.cookies.MongoID,
       authID: req.params.id,
     });
   } catch (err) {
@@ -162,16 +162,17 @@ exports.startSearching = async (req, res) => {
   console.log("Starting search");
   let prepare_to_search = await ItemModel.findOneAndUpdate(
     { jobNumber: req.cookies.current_estimate_id },
+    { _id: req.params.mongoID },
     { finsihedEstimate: true }
   );
-  res.redirect("/jobEstimates");
+  res.redirect(`/jobEstimates/${req.cookies.authID}/${req.cookies.mongo}`);
 };
 
 exports.deleteEstimate = async (req, res) => {
   const delete_estimate = await ItemModel.findOneAndDelete({
     jobNumber: req.params.jobNumber,
   });
-  res.redirect("/jobEstimates");
+  res.redirect(`/jobEstimates/${req.cookies.authID}/${req.cookies.mongo}`);
 };
 
 exports.deleteItem = async (req, res) => {
@@ -179,7 +180,9 @@ exports.deleteItem = async (req, res) => {
     { jobNumber: req.cookies.current_estimate_id },
     { $pull: { itemList: { itemName: req.params.itemName } } }
   );
-  res.redirect(`/jobEstimates/${req.cookies.current_estimate_id}`);
+  res.redirect(
+    `/jobEstimates/${req.cookies.current_estimate_id}/${req.cookies.authID}/${req.cookies.mongo}`
+  );
 };
 
 exports.markEstimateFinished = async (req, res) => {
@@ -188,5 +191,5 @@ exports.markEstimateFinished = async (req, res) => {
     { jobNumber: req.params.jobNumber },
     { finsihedEstimate: true }
   );
-  res.redirect("/jobEstimates");
+  res.redirect(`/jobEstimates/${req.cookies.authID}/${req.cookies.mongo}`);
 };

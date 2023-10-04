@@ -20,14 +20,51 @@ mixin unit_price_in_estimate()
 
 mixin quantity_in_estimate_list()
     each item in itemList 
-        input(type="number", value=`${item.quantity}`, class="quantity-input")
+        //- input(type="number", value=`${item.quantity}`, class="quantity-input")
+        p=item.quantity
 
 mixin items_in_estimate_list()
     each item in itemList
         p=item.itemName
 
 
+
 block content
+
+    //- FILTERS FOR NAV BAR
+    <nav class="navbar navbar-dark bg-dark fixed-top navbar-custom">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Filters</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body center-filters">
+                <div class="btn-group custom-btn-group-nav" role="group" aria-label="Basic checkbox toggle button group">
+                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck1">Home Depot</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck2">Lowes</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck3">Menards</label>
+
+                    <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck4">Price Comparison</label>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </nav>
+
+
+
     .itemized-main-content
         .itemized-side 
             <form action="/add/item" method="post" class="add-item-form">
@@ -40,68 +77,22 @@ block content
 
             .items-list-div
                 .item-column-div 
-                    p Items 
+                    p <u>Items</u> 
                     +items_in_estimate_list()
                 
                 div(class="item-column-div input-btn-itemized") 
-                    p Quantity 
+                    p <u>Quantity</u> 
                     +quantity_in_estimate_list()
                 .item-column-div 
-                    p Single Price 
+                    p <u>Single Price</u>  
                     +unit_price_in_estimate()
                 .item-column-div
-                    p Total Price 
+                    p <u>Total Price</u>  
                     +total_price_in_list()
                 div(class="item-column-div input-btn-itemized") 
                     +edit_delete_button()
             div 
                 .search-for-items-div 
-                    form(action=`/jobEstimates/FinishEstimate/${jobNumber}`, method="post") 
+                    form(action=`/jobEstimates/StartSearching/${jobNumber}/${mongoID}`, method="post") 
                         button(type="submit") Search
 
-
-        .filters-side 
-            <label class="container">Lowes
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Home Depot
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Menards
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-            </label>
-            <label class="container">Price Comparison
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-            </label>
-
-
-            //- p filters
-            //- .checkboxes-div 
-            //-     <input type="checkbox" class="checkbox">
-            //-     <input type="checkbox" class="checkbox">
-            //-     <input type="checkbox" class="checkbox">
-            //-     <input type="checkbox" class="checkbox">
-
-            //- .checkboxes-label
-            //-     p Lowes 
-            //-     p Home Depot 
-            //-     p Menards 
-            //-     p Price Checker
-            //- <form>
-            //-     label(for="lowes-checkbox") Lowes
-            //-     <input type="checkbox">
-            //-     label(for="lowes-checkbox") Home Depot
-            //-     <input type="checkbox">
-            //-     label(for="lowes-checkbox") Menards
-            //-     <input type="checkbox">
-            //-     label(for="lowes-checkbox") Price Checker
-            //-     <input type="checkbox">
-
-            //- <input type="checkbox"> Lowes 
-            //- <input type="checkbox"> Home Depot 
-            //- <input type="checkbox"> Menards 
-            //- <input type="checkbox"> Price Checker

@@ -90,7 +90,7 @@ block content
             +edit_delete_button()
     div 
         .search-for-items-div 
-            form(action=`/jobEstimates/FinishEstimate/${jobNumber}`, method="post") 
+            form(action=`/jobEstimates/StartSearching/${jobNumber}/${mongoID}`, method="post") 
                 button(type="submit") Search
             
 

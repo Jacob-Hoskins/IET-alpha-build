@@ -1,6 +1,6 @@
 header 
     nav(class="logged-in-nav")
-        a(href="/jobEstimates") 
+        a(href=`/jobEstimates/${authID}/${mongoID}`) 
             img(src="/images/estimate_icon.png", alt="estimates", srcset="", title="Estimates", class="nav-btn")
         a(href="/jobEstimates") 
             img(src="/images/calander_icon.png", alt="calander", srcset="", title="calander", class="nav-btn")
