@@ -52,10 +52,13 @@ input {
 }
 
 /* Side bar */
+
+/* TODO: put all of this in the dashboard style sheet and fix base views of dashboard attached to this */
 header {
   display: flex;
   flex-direction: row;
   height: 100vh;
+  position: fixed;
 }
 
 /* nav {
@@ -311,7 +314,7 @@ table {
 
 /* TODO: update mobile styling for the create account section. Everything should be bigger */
 /* Create Account Page */
-.create-account-div {
+/* .create-account-div {
   background-color: #ee6c4d;
   width: 50%;
   margin: auto;
@@ -332,4 +335,4 @@ table {
   margin: auto;
   margin-top: 3vh;
   background-color: #98c1d9;
-}
+} */

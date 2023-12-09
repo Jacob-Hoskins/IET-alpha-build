@@ -1,0 +1,222 @@
+header {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    position: fixed;
+}
+
+@font-face {
+    font-family: titleFont;
+    src: url("./morsan/MorsanFont/Morsan.ttf");
+}
+
+@font-face {
+    font-family: bodyFont;
+    src: url("./champagne---limousines/Champagne---Limousines.ttf");
+}
+
+p {
+    color: #e0fbfc;
+    font-family: bodyFont;
+    font-size: 18px;
+}
+
+.nav-body-div {
+    display: flex;
+}
+
+.nav-btn {
+    width: 50px;
+    height: 50px;
+}
+
+.logged-in-nav {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+background-color: #ee6c4d;
+height: 100vh;
+}
+
+.main-all-jobs-div{
+    width: 85vw;
+    margin: auto;
+}
+
+#create-job-form-div{
+    display: none;
+    background-color: #3D5A80;
+    margin: auto;
+    border-radius: 7px;
+}
+
+.post-job-form-btn{
+    background-color: #fd7e14;    
+    width: 10vw;
+    margin: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.job-form{
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.job-form-input{
+    background-color: #3D5A80;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid gray;
+    color: white;
+    width: 75vw;
+    margin: auto;
+}
+
+input::placeholder{
+    color: black;
+}
+
+.form-label{
+    margin-left: 5vw; 
+}
+
+.main-all-jobs-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15vh;
+    height: 100vh;
+}
+
+.all-jobs-cards-div{
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.work-card{
+    display: flex;
+    flex-direction: column;
+    background-color: #ee6c4d;
+    border: solid black 2px;
+    width: 35vw;
+    border-radius: 25px;
+    margin-bottom: 5vh;
+    box-shadow: 10px 20px 2px -2px rgba(0, 0, 0, 0.2); 
+}
+
+.card-row{
+    display: flex;
+}
+
+.top-work-card-row{
+    display: flex;
+    justify-content: space-around;
+}
+
+.job-desc-header{
+    font-size: 12px;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.job-name-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.job-number-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.middle-work-card-row{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-work-card-row{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.job-card-btn{
+    color: black;
+    border: solid black 2px;
+    background-color: #98c1d9;
+    padding: 0 5px;
+    border-radius: 10px;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+.job-card-btn p{
+    color: black;
+}
+
+.job-card-btn:hover{
+    border: solid white 2px;
+    color: black;
+}
+
+/* JOB DETAILS PAGE */
+
+.work-edit-icon{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.job-details-main-div{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vw;
+}
+
+.job-details-section{
+    padding-bottom: 25vh;
+    border-bottom: solid #ee6c4d 2px;
+}
+
+.top-section{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-top: 10px;
+}
+
+.mid-section{
+    display: flex;
+    justify-content: center;
+}
+
+.scope-of-work-div{
+    display: flex;
+    width: 90vw;
+    justify-content: center;
+}
+
+.mid-two-section{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.bottom-section{
+    display: flex;
+    justify-content: center;
+}

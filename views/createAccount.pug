@@ -1,17 +1,52 @@
 extends base  
 
 block content
-    .create-account-div
-        form(action=`/createAccount/newUser/${authID}/${email}`, method="post", class="create-account-form")
-            h2 Create your account today!
-            label(for="firstName") First Name
-            input(type="text", name="firstName") 
-            label(for="lastName") last Name
-            input(type="text", name="lastName") 
-            label(for="email") email  
-            input(type="email", name="email", placeholder=email)
-            //- lable(for="password") Password
-            //- input(type="password", name="password")
-            //- label(for="passConfirm") Password Confirm
-            //- input(type="password", name="passConfirm")
-            button(type="submit") Create Account
+    div(class="employee-admin-btn-choice", id="employee-admin-btn-choice") 
+        div(class="account-role-btn", id="account-role-btn")
+            img(src="/images/owner-icon.png", alt="Owner icon", srcset="", title="Owner/Company Account", class="acconut-choice-btn")
+            p(id="owner-btn") Owner 
+        div(class="account-role-btn", id="employee-btn")
+            img(src="/images/employee-icon.png", alt="Employee icon", srcset="", title="Employee Account", class="account-choice-btn")
+            p(id="employee-btn") Employee
+
+    //- TODO: switch the classes from the regular stylesheet to the createAccount stylesheet
+    div(class='icon-form-div' id="icon-form-div")
+        .back-icon-div
+            img(src="/images/Go_back_icon.png", alt="Go Back", srcset="", title="Close", id="back-icon")
+
+        div(class="create-account-admin-div form-account-div", id="create-account-admin-div")
+
+            //- TODO: set url to owner and employee and update controller and router
+            form(action=`/new-account/createAccount/newUser/${authID}/${email}/owner`, method="post", class="create-account-form", id="create-account-form")
+                h2 Create your companies account today!
+                label(for="firstName") First Name
+                input(type="text", name="firstName") 
+                label(for="lastName") last Name
+                input(type="text", name="lastName") 
+                label(for="email") Email Confirm
+                input(type="email", name="email", placeholder=`${email}`)
+                label(for="company") Company
+                input(type="text", name="company", id="company", placeholder="Company name")
+                //- lable(for="password") Password
+                //- input(type="password", name="password")
+                //- label(for="passConfirm") Password Confirm
+                //- input(type="password", name="passConfirm")
+                button(type="submit") Create Account
+
+        div(class="create-account-user-div form-account-div", id="create-account-user-div")
+            form(action=`/new-account/createAccount/newUser/${authID}/${email}/employee`, method="post", class="create-account-form", id="create-account-form")
+                h2 Create your employee account today!
+                label(for="firstName") First Name
+                input(type="text", name="firstName") 
+                label(for="lastName") last Name
+                input(type="text", name="lastName") 
+                label(for="email") Email Confirm
+                input(type="email", name="email", placeholder=email)
+                label(for="company-code") Company code
+                input(type="text", name="company-code", id="company-code", placeholder="Company code")
+                //- lable(for="password") Password
+                //- input(type="password", name="password")
+                //- label(for="passConfirm") Password Confirm
+                //- input(type="password", name="passConfirm")
+                button(type="submit") Create Account
+    script(src='/scripts/createAccountScript.js')

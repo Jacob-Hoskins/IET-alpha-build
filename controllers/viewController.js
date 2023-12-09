@@ -26,7 +26,7 @@ exports.homehandle = async (req, res) => {
     } catch (err) {
       console.log(err);
       res.redirect(
-        `/account-setup/${req.oidc.user["sub"].split("|")[1]}/${
+        `/new-account/account-setup/${req.oidc.user["sub"].split("|")[1]}/${
           req.oidc.user["email"]
         }`
       );
@@ -116,8 +116,8 @@ exports.allEstimates = async (req, res) => {
 
     res.render("allEstimates", {
       estimates: all_estimates,
-      mongoID: req.cookies.MongoID,
-      authID: req.params.id,
+      mongoID: req.cookies.mongo,
+      authID: req.cookies.authID,
     });
   } catch (err) {
     console.log(err);

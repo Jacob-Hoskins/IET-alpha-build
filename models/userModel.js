@@ -22,6 +22,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  company: [{
+    name:{
+      required: [true],
+      type: String,
+    },
+    companyId:{
+      type: String,
+    }
+
+  }],
+  role:{
+    required: [true],
+    type: String
+  }
   // password: {
   //   type: String,
   //   required: [true, "A user must have a password"],

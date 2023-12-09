@@ -1,8 +1,11 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/userModel");
+const CompanyModel = require("../models/companyModel")
 const appError = require("../utils/appError");
 const { auth, requiresAuth } = require("express-openid-connect");
+const cookieParser = require("cookie-parser");
+
 
 exports.accountSetup = async (req, res) => {
   res.render("createAccount", {
@@ -74,3 +77,36 @@ exports.createNewUser = async (req, res) => {
   console.log(req.params.authID, newUser["id"]);
   res.redirect(`/jobEstimates/${req.params.authID}/${newUser["id"]}`);
 };
+
+exports.createNewUserEmployee = async (req, res) =>{
+  res.end("empolyee document creation post")
+}
+
+exports.createNewUserOwner = async(req, res) =>{
+  try{
+    const newUser = await UserModel.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.params.email,
+      authPID: req.params.authID,
+      company:{ 
+        name: req.body.company,
+      },
+      role: "owner"
+    })
+
+    const newCompany = await CompanyModel.create({
+      ownerId: newUser["_id"],
+      companyName: req.body.company
+    })
+
+    console.log(newCompany["_id"].toString())
+// 
+    const updateUserCompanyInfo = await UserModel.findOneAndUpdate({id: newUser["_id"]}, {company: {companyId: newCompany["_id"].toString()}})
+    res.cookie("compID", newCompany["_id"].toString())
+    // res.end("Owner document creation post")
+    res.redirect(`/jobEstimates/${req.params.authID}/${newUser["id"]}`)
+  }catch(err){
+    console.log(err)
+  }
+}

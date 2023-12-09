@@ -1,0 +1,85 @@
+.employee-admin-btn-choice{
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: space-around;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+}
+
+.account-role-btn{
+    cursor: pointer;
+    background-color: #ee6c4d;
+    border: solid #2A969D 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30vh;
+    width: 20vw;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.account-role-btn:hover{
+    border: solid black 2px;
+    box-shadow: 10px 20px 2px -2px rgba(0, 0, 0, 0.2); 
+}
+
+/* create account form */
+#back-icon{
+    display: none;
+    margin-top: 10vh;
+    margin-right: 5vw;
+    height: 10vh;
+    width: 5vw;
+    cursor: pointer;
+}
+
+.icon-form-div{
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+    width: 95vw;
+    overflow-y: hidden;
+}
+
+.back-icon-div{
+    width: 100vw;
+    display: flex;
+    height: 2vh;
+    justify-content: flex-end;
+}
+
+#create-account-admin-div{
+    display: none;    
+}
+
+.form-account-div {
+    background-color: #ee6c4d;
+    width: 50vw;
+    margin: auto;
+    margin-top: 5vh;
+    text-align: center;
+    border-radius: 25px;
+    border: solid #000000 2px;
+}
+  
+.create-account-form {
+display: flex;
+flex-direction: column;
+padding: 10px;
+}
+
+.create-account-form button {
+width: 15vw;
+margin: auto;
+margin-top: 3vh;
+background-color: #98c1d9;
+}
+
+/* user account creation form */
+#create-account-user-div{
+    display: none;
+}

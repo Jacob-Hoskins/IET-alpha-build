@@ -1,5 +1,7 @@
 const viewRouter = require("./routes/viewRouter");
 const timeClockRouter = require("./routes/timeClockRouter");
+const workRouter = require("./routes/workRouter")
+const newAccountRouter = require("./routes/authRouter")
 const pug = require("pug");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -7,8 +9,8 @@ const cookieParser = require("cookie-parser");
 const { auth, requiresAuth } = require("express-openid-connect");
 
 // Below are AUTH0 callback URL's
-// , https://iet.onrender.com, https://iet.onrender.com/jobEstimates, https://iet.onrender.com/login, https://iet.onrender.com/callback
-// baseURL: "http://localhost:10000",
+// ,  https://iet.onrender.com/jobEstimates, https://iet.onrender.com/login, https://iet.onrender.com/callback
+// baseURL: "http://localhost:10000","http://localhost:10000/",
 
 const config = {
   authRequired: false,
@@ -34,6 +36,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(`${__dirname}/public`));
 
 app.use("/", viewRouter);
-app.use("/timeclock", timeClockRouter);
+app.use("/new-account", newAccountRouter)
+app.use("/work", workRouter);
 
 module.exports = app;

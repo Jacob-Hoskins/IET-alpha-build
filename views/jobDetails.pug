@@ -1,0 +1,34 @@
+extends dashboardBase 
+
+block content 
+    .job-details-main-div
+        div(class="job-details-section top-section")
+            .top-info-div 
+                p=`Client Name: ${jobDetails.clientName}`
+                p=`Job Name: ${jobDetails.jobName}` 
+                p=`Job Address: ${jobDetails.address}`
+            
+            .work-timeclock-div 
+                p time clock area
+                button Timeclock
+        
+        div(class="job-details-section mid-section")
+            .scope-of-work-div
+                p Scope of Work
+                img(src="/images/edit_icon.png", alt="work", srcset="", title="work", class="work-edit-icon", id="work-page-edit-btn-scope") 
+        
+        div(class="job-details-section mid-two-section")
+            .item-list-div 
+                p Items Needed 
+                input(type="text", placeholder="Items needed")
+                button Add
+            
+            .tools-on-job-div 
+                p Tools on site 
+                input(type="text", placeholder="Tool Name")
+                button Add
+
+        div(class="job-details-section bottom-section")
+            .job-notes-div.scope-of-work-div 
+                p Notes
+                img(src="/images/edit_icon.png", alt="work", srcset="", title="work", class="work-edit-icon") 

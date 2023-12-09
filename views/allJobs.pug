@@ -1,0 +1,114 @@
+extends dashboardBase 
+
+mixin jobDetails()
+    each job in jobs 
+        .work-card
+            div(class="top-work-card-row card-row")
+                .job-name-div
+                    p(class="job-desc-header") Job Name
+                    p=job.jobName 
+                .job-number-div
+                    p(class="job-desc-header") Job Number
+                    p=job.jobNumber 
+            div(class="middle-work-card-row card-row")
+                p(class="job-desc-header") Address
+                p=job.address
+            div(class="bottom-work-card-row card-row")
+                .job-card-btn
+                    p job timeclock button 
+                a(href=`/work/allJobs/Job/${authID}/${mongoID}/${job.id}/${compID}`)  
+                    .job-card-btn
+                        //- a(href=`/work/allJobs/Job/${authID}/${mongoID}`)
+                        p job details button 
+
+mixin jobName()
+    each job in jobs
+        p=job.jobName
+
+mixin jobNumber()
+    each num in numbers 
+        p=num.jobNumber 
+
+mixin jobAddress()
+    each add in address 
+        p=add.address
+
+
+block content 
+    //- h1 Work Page View file
+    .main-all-jobs-div
+        div(id="create-job-form-div") 
+            form(action=`/work/allJobs/createJob/${authID}/${mongoID}`, method="post", class="job-form")
+                label(for="clientName", class="form-label") Client Name*
+                input(type="text", placeholder="John Doe", id="clientName", name="clientName", required, class="job-form-input")
+                label(for="jobName", class="form-label") Job Name *
+                input(type="text", placeholder="John Doe Job", id="jobName", name="jobName" required, class="job-form-input")
+                label(for="jobNumber", class="form-label") Job Number*
+                input(type="number", id="jobNumber", name="jobNumber", placeholder=0, required, class="job-form-input")
+                label(for="address", class="form-label") Address* 
+                input(type="text", placeholder="123 Berry st", name="address", id="address", required, class="job-form-input")
+                label(for="city", class="form-label") City *
+                input(type="text", id="city", name="city" placeholder="Dover", required, class="job-form-input")
+                label( class="form-label") State *
+                select(name="states", required, class="job-form-input")
+                    option(value="Alabama") Alabama 
+                    option(value="Alaska") Alaska 
+                    option(value="Arizona") Arizona 
+                    option(value="Arkansas") Arkansas 
+                    option(value="California") California 
+                    option(value="Colorado") Colorado 
+                    option(value="Connecticut") Connecticut 
+                    option(value="Delaware") Delaware 
+                    option(value="Flordia") Flordia 
+                    option(value="Georgia") Georgia 
+                    option(value="Hawaii") Hawaii 
+                    option(value="Idaho") Idaho 
+                    option(value="Illinois") Illinois 
+                    option(value="Indiana") Indiana 
+                    option(value="Iowa") Iowa 
+                    option(value="Kansas") Kansas    
+                    option(value="Kentucky") Kentucky 
+                    option(value="Louisiana") Louisiana 
+                    option(value="Maine") Maine 
+                    option(value="Maryland") Maryland 
+                    option(value="Massachusetts") Massachusetts 
+                    option(value="Michigan") Michigan 
+                    option(value="Minnesota") Minnesota 
+                    option(value="Mississippi") Mississippi
+                    option(value="Missouri") Missouri 
+                    option(value="Montana") Montana 
+                    option(value="Nebraska") Nebraska 
+                    option(value="Nevada") Nevada 
+                    option(value="New Hampshire") New Hampshire 
+                    option(value="New Jersey") New Jersey 
+                    option(value="New Mexico") New Mexico 
+                    option(value="New York") New York 
+                    option(value="North Carolina") North Carolina 
+                    option(value="North Dakota") North Dakota            
+                    option(value="Ohio") Ohio 
+                    option(value="Oklahoma") Oklahoma 
+                    option(value="Oregon") Oregon  
+                    option(value="Pennsylvania") Pennsylvania
+                    option(value="Rhode Island") Rhode Island 
+                    option(value="South Dakota") South Dakota 
+                    option(value="Tennessee") Tennessee
+                    option(value="Texas") Texas 
+                    option(value="Utah") Utah 
+                    option(value="Vermont") Vermont 
+                    option(value="Virgina") Virgina 
+                    option(value="Washington") Washington 
+                    option(value="West Virgina") West Virgina 
+                    option(value="Wisconsin") Wisconsin 
+                    option(value="Wyoming") Wyoming
+                Label(for="zipCode", class="form-label") ZipCode *
+                input(type="number", id="zipCode", name="zipCode", placeholder=17202, required, class="job-form-input")
+                button(type="submit", class="post-job-form-btn") Create
+
+        .add-job-div 
+            button(id="create-job-btn") Create Job
+
+        .all-jobs-cards-div 
+            +jobDetails()
+            
+
+        script(src='/scripts/allWorkScript.js')

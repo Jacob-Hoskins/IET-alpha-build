@@ -1,6 +1,5 @@
 const express = require("express");
 const viewController = require("../controllers/viewController");
-const authController = require("../controllers/authcontroller");
 const { auth, requiresAuth } = require("express-openid-connect");
 
 const router = express.Router();
@@ -9,15 +8,9 @@ const router = express.Router();
 
 router.get("/", viewController.homehandle);
 
-router.get(
-  "/account-setup/:authID/:email",
-  requiresAuth(),
-  authController.accountSetup
-);
-
 // TODO: add identifier for users to the routes
 router.get(
-  "/jobEstimates/:id/:MongoID",
+  "/jobEstimates/:id/:MongoID/",
   requiresAuth(),
   viewController.allEstimates
 );
@@ -36,11 +29,6 @@ router.post(
   "/jobEstimate/StartSearching/:jobNumber/:mongoID",
   requiresAuth(),
   viewController.startSearching
-);
-
-router.post(
-  "/createAccount/newuser/:authID/:email",
-  authController.createNewUser
 );
 
 // TODO: run test on the delete routes and make sure they work
