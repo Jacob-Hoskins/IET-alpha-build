@@ -19,7 +19,8 @@ scope_of_work_close_btn.addEventListener("click", () =>{
 })
 
 addNotesBtn.addEventListener('click', () =>{
-    addNotesFormDiv.style.display = "block"
+    addNotesFormDiv.style.display = "flex"
+    addNotesFormDiv.style.justifyContent = "center"
     addNotesBtn.style.display = "none"
     notes_close_btn.style.display = "block"
 })
