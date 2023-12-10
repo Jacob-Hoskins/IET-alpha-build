@@ -54,12 +54,12 @@ input {
 /* Side bar */
 
 /* TODO: put all of this in the dashboard style sheet and fix base views of dashboard attached to this */
-header {
+/* header {
   display: flex;
   flex-direction: row;
   height: 100vh;
   position: fixed;
-}
+} */
 
 /* nav {
   background-color: #ee6c4d;
