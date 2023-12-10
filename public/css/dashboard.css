@@ -221,9 +221,9 @@ input::placeholder{
     text-align: center;
 }
 
-.scope-of-work-input{
-    /* margin: auto;   */
-}
+/* .scope-of-work-input{
+    margin: auto;  
+} */
 
 #scope-of-work-interaction-div{
     /* JAVASCRIPT FILE SHOULD TURN THIS TO FELX */
@@ -250,6 +250,13 @@ input::placeholder{
         display: flex;
         flex-direction: column;
         width: 100vw;
+    }
+
+    .mobile-nav-flex-disp-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ee6c4d;
     }
 
     .main-all-jobs-div{
