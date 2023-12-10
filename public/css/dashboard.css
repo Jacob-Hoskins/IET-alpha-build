@@ -184,6 +184,22 @@ input::placeholder{
     margin-left: 25px;
 }
 
+#work-page-close-btn-scope{
+    height: 25px;
+    width: 25px;
+    margin-left: 25px;
+    display: none;
+    cursor: pointer;
+}
+
+#work-page-close-btn-notes{
+    height: 25px;
+    width: 25px;
+    margin-left: 25px;
+    display: none;
+    cursor: pointer;
+}
+
 .job-details-main-div{
     width: 100vw;
     display: flex;
@@ -207,6 +223,10 @@ input::placeholder{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.add-job-scope-task-btn{
+    margin-left: 25px;
 }
 
 .scope-of-work-div{
