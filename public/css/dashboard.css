@@ -294,4 +294,8 @@ input::placeholder{
     .work-card{
         width: 95vw;
     }
+
+    .main-all-jobs-div{
+        margin-top: 20vh;
+    }
 }
