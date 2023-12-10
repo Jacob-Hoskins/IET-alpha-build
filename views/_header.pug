@@ -16,30 +16,30 @@ header
     .mobile-nav-view
         <div class="collapse" id="navbarToggleExternalContent">
             .mobile-nav-flex-disp-div
-                .mobile-nav-options
-                    a(href=`/jobEstimates/${authID}/${mongoID}`) 
+                a(href=`/jobEstimates/${authID}/${mongoID}`) 
+                    .mobile-nav-options
                         img(src="/images/estimate_icon.png", alt="estimates", srcset="", title="Estimates", class="nav-btn")
-                    p Estimates
-                .mobile-nav-options
-                    a(href="/jobEstimates") 
+                        p Estimates
+                a(href="/jobEstimates") 
+                    .mobile-nav-options
                         img(src="/images/calander_icon.png", alt="calander", srcset="", title="calander", class="nav-btn")
-                    p Calendar 
-                .mobile-nav-options
-                    a(href=`/work/allJobs/${authID}/${mongoID}`) 
+                        p Calendar 
+                a(href=`/work/allJobs/${authID}/${mongoID}`)         
+                    .mobile-nav-options
                         img(src="/images/Work_icon.png", alt="work", srcset="", title="work", class="nav-btn")
-                    p Jobs
-                .mobile-nav-options
-                    a(href=`/allJobs`) 
+                        p Jobs
+                a(href=`/allJobs`)         
+                    .mobile-nav-options 
                         img(src="/images/Timeclock_icon.png", alt="timeclock", srcset="", title="Timeclock", class="nav-btn")
-                    p Timeclock 
-                .mobile-nav-options
-                    a(href="/jobEstimates") 
+                        p Timeclock 
+                a(href="/jobEstimates")
+                    .mobile-nav-options 
                         img(src="/images/Employee_icon.png", alt="Employees", srcset="", title="Employees", class="nav-btn")
-                    p Employees
-                .mobile-nav-options
-                    a(href="/jobEstimates") 
+                        p Employees
+                a(href="/jobEstimates")        
+                    .mobile-nav-options
                         img(src="/images/settings_icon.png", alt="Settings", title="Settings", class="nav-btn")
-                    p Settings
+                        p Settings
 
         </div>
         <nav class="navbar navbar-dark bg-dark">
