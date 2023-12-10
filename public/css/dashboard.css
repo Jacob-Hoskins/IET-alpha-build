@@ -276,3 +276,9 @@ input::placeholder{
         width: 50vw;
     }
 }
+
+@media (max-width: 650px){
+    .work-card{
+        width: 75vw;
+    }
+}
