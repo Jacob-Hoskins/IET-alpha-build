@@ -20,12 +20,9 @@ exports.workHomePage = async (req, res) => {
     let comp = search_for_user["company"][0]["_id"].toString()
 
     let compInfo = await CompanyModel.findOne({ownerId: req.cookies.mongo})
-    // console.log(compInfo["allJobs"])
 
     res.status(200).render("allJobs",{
         jobs: compInfo["allJobs"],
-        // numbers: compInfo["allJobs"],
-        // address: compInfo["allJobs"],
         authID: search_for_user["authPID"],
         mongoID: search_for_user["_id"],
         compID: compInfo["_id"],

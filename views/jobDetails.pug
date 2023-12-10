@@ -16,6 +16,10 @@ block content
             .scope-of-work-div
                 p Scope of Work
                 img(src="/images/edit_icon.png", alt="work", srcset="", title="work", class="work-edit-icon", id="work-page-edit-btn-scope") 
+            .scope-of-work-interaction#scope-of-work-interaction-div
+                input(class="scope-of-work-input", id="scope-of-work-input-id")
+                button(class="add-job-scope-task-btn") Add
+                
         
         div(class="job-details-section mid-two-section")
             .item-list-div 
@@ -31,4 +35,8 @@ block content
         div(class="job-details-section bottom-section")
             .job-notes-div.scope-of-work-div 
                 p Notes
-                img(src="/images/edit_icon.png", alt="work", srcset="", title="work", class="work-edit-icon") 
+                img(src="/images/edit_icon.png", alt="work", srcset="", title="work", class="work-edit-icon", id="addNotesBtn") 
+            .notes-interaction#notes-interaction-div
+                input(class="scope-of-work-input")
+                button(class="add-job-scope-task-btn") Add
+    script(src='/scripts/jobDetails.js')

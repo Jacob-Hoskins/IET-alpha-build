@@ -201,6 +201,7 @@ input::placeholder{
 
 .mid-section{
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -216,7 +217,37 @@ input::placeholder{
     text-align: center;
 }
 
+.scope-of-work-input{
+    /* margin: auto;   */
+}
+
+#scope-of-work-interaction-div{
+    /* JAVASCRIPT FILE SHOULD TURN THIS TO FELX */
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+}
+
 .bottom-section{
     display: flex;
     justify-content: center;
+}
+
+#notes-interaction-div{
+    display: none;
+}
+
+@media (max-width: 1000px){
+    .all-jobs-cards-div {
+        width: 90vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .work-card{
+        width: 50vw;
+    }
 }

@@ -74,6 +74,8 @@ exports.itemizedEstimatePage = async (req, res) => {
     jobName: current_items.jobName,
     jobNumber: current_items.jobNumber,
     itemList: current_items.itemList,
+    mongoID: req.cookies.mongo,
+    authID: req.cookies.authID,
   });
 
   // res.status(200).render("itemizedSearching", {
