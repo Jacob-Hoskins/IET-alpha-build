@@ -5,6 +5,10 @@ header {
     position: fixed;
 }
 
+.mobile-nav-view{
+    display: none;
+}
+
 @font-face {
     font-family: titleFont;
     src: url("./morsan/MorsanFont/Morsan.ttf");
@@ -238,6 +242,20 @@ input::placeholder{
 }
 
 @media (max-width: 1000px){
+    .logged-in-nav{
+        display: none;
+    }
+    
+    .mobile-nav-view{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    .main-all-jobs-div{
+        margin-top: 40vh;
+    }
+
     .all-jobs-cards-div {
         width: 90vw;
         display: flex;
