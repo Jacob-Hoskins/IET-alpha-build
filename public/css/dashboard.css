@@ -250,6 +250,7 @@ input::placeholder{
         display: flex;
         flex-direction: column;
         width: 100vw;
+        height: 12vh;
     }
 
     .mobile-nav-flex-disp-div{
