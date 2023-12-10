@@ -259,6 +259,13 @@ input::placeholder{
         background-color: #ee6c4d;
     }
 
+    .mobile-nav-options{
+        width: 50vw;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+    }
+
     .main-all-jobs-div{
         margin-top: 40vh;
     }
